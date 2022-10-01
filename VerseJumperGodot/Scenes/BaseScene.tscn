@@ -4,7 +4,7 @@
 [ext_resource path="res://Player.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 34.0
+radius = 6.1692
 height = 0.0
 
 [node name="BaseScene" type="Node2D"]
@@ -13,10 +13,15 @@ height = 0.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 203.5, 119.5 )
-scale = Vector2( 2.90625, 2.90625 )
+position = Vector2( 56.246, 92.3816 )
+scale = Vector2( 0.531816, 0.531816 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 204, 129 )
+position = Vector2( 56.4035, 93.8909 )
 shape = SubResource( 1 )
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bounds"]
+polygon = PoolVector2Array( 5.20274, -0.422295, 4.90544, 174.986, 315.586, 176.175, 315.586, 1.65882, 8.17577, -0.124992, 329.559, -5.77373, 329.559, 193.121, -17.0949, 189.851, 0.743225, -9.34135 )
