@@ -1,27 +1,134 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://PlayerAssets/pumpkin.png" type="Texture" id=1]
+[ext_resource path="res://dentention_placeholder.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://rusty_lake_bg.jpg" type="Texture" id=3]
+[ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://ground.png" type="Texture" id=5]
+[ext_resource path="res://temp_npc_asset.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/NPC.gd" type="Script" id=7]
+[ext_resource path="res://novem___.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Caring For a Newborn KittenHERO.jpg" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 6.1692
-height = 0.0
+radius = 8.97989
+height = 20.052
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 668.63, 47.0815 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 50.3519, 294.946 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 114.89, 248.791 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 128.841, 260.577 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 8 )
 
 [node name="BaseScene" type="Node2D"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 655, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 197.748, 57.3981 )
+scale = Vector2( 0.856688, 0.856688 )
+texture = ExtResource( 3 )
+
+[node name="ground" type="Sprite" parent="."]
+position = Vector2( 580.358, 208.134 )
+scale = Vector2( 18.9682, 3.61931 )
+texture = ExtResource( 5 )
+
 [node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 24.5745, 169.367 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 56.246, 92.3816 )
-scale = Vector2( 0.531816, 0.531816 )
+position = Vector2( 1.70226, -10.1741 )
+scale = Vector2( 0.234872, 0.234872 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 56.4035, 93.8909 )
+position = Vector2( 1.60013, -6.82988 )
 shape = SubResource( 1 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bounds"]
-polygon = PoolVector2Array( 5.20274, -0.422295, 4.90544, 174.986, 315.586, 176.175, 315.586, 1.65882, 8.17577, -0.124992, 329.559, -5.77373, 329.559, 193.121, -17.0949, 189.851, 0.743225, -9.34135 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 508.573, 226.922 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 1161.31, 150.837 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( -46.7194, 112.126 )
+shape = SubResource( 3 )
+
+[node name="NPC" type="StaticBody2D" parent="."]
+position = Vector2( 1074.68, 143.438 )
+scale = Vector2( 0.215179, 0.215179 )
+script = ExtResource( 7 )
+
+[node name="temp_npc_asset" type="Sprite" parent="NPC"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
+shape = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="NPC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Area2D"]
+shape = SubResource( 5 )
+
+[node name="Label" type="Label" parent="NPC"]
+visible = false
+margin_left = -79.0854
+margin_top = -314.402
+margin_right = 221.915
+margin_bottom = -259.402
+custom_fonts/font = SubResource( 6 )
+text = "Press Enter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 24.5745, 169.367 )
+current = true
+script = ExtResource( 4 )
+
+[node name="Limits" type="Node" parent="Camera2D"]
+
+[node name="TopLeft" type="Position2D" parent="Camera2D/Limits"]
+position = Vector2( 6.67433, -8.67638 )
+
+[node name="BottomRight" type="Position2D" parent="Camera2D/Limits"]
+position = Vector2( 1119.26, 190.882 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="catPhoto" type="Sprite" parent="."]
+visible = false
+position = Vector2( 985.51, 81.2045 )
+scale = Vector2( 0.201619, 0.201619 )
+texture = ExtResource( 9 )
+
+[connection signal="body_entered" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_exited"]
