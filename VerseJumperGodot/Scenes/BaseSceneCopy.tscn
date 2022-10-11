@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://dentention_placeholder.png" type="Texture" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://rusty_lake_bg.jpg" type="Texture" id=3]
+[ext_resource path="res://Scenes/Player2.gd" type="Script" id=2]
+[ext_resource path="res://highschool.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=4]
-[ext_resource path="res://ground.png" type="Texture" id=5]
 [ext_resource path="res://temp_npc_asset.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/NPC.gd" type="Script" id=7]
 [ext_resource path="res://novem___.ttf" type="DynamicFontData" id=8]
@@ -17,16 +16,16 @@ radius = 8.97989
 height = 20.052
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 668.63, 47.0815 )
+extents = Vector2( 311.028, 34.5302 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 50.3519, 294.946 )
+extents = Vector2( 44.2432, 287.445 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 114.89, 248.791 )
+extents = Vector2( 63.3546, 145.094 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 128.841, 260.577 )
+extents = Vector2( 47.7232, 117.739 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 32
@@ -40,21 +39,10 @@ extents = Vector2( 27.2922, 36.0576 )
 
 [node name="BaseScene" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.4, 1 )
-motion_mirroring = Vector2( 655, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 197.748, 57.3981 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 198.748, 57.3981 )
 scale = Vector2( 0.856688, 0.856688 )
 texture = ExtResource( 3 )
-
-[node name="ground" type="Sprite" parent="."]
-position = Vector2( 580.358, 208.134 )
-scale = Vector2( 18.9682, 3.61931 )
-texture = ExtResource( 5 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 24.5745, 169.367 )
@@ -78,31 +66,43 @@ remote_path = NodePath("../../Camera2D")
 [node name="Bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 508.573, 226.922 )
+position = Vector2( 214.045, 297.944 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 1161.31, 150.837 )
+position = Vector2( 479.123, 110.918 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( -46.7194, 112.126 )
+position = Vector2( -81.7194, 109.126 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 213.202, -194.837 )
+rotation = -1.5708
 shape = SubResource( 3 )
 
 [node name="NPC" type="StaticBody2D" parent="."]
-position = Vector2( 215.896, 148.994 )
+position = Vector2( 356.167, 163.843 )
 scale = Vector2( 0.215179, 0.215179 )
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="temp_npc_asset" type="Sprite" parent="NPC"]
+position = Vector2( -43.4753, 98.3797 )
+scale = Vector2( 0.551801, 0.551801 )
 texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
+position = Vector2( -41.0329, 94.7664 )
 shape = SubResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="NPC"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Area2D"]
+position = Vector2( -51.7799, 91.8355 )
 shape = SubResource( 5 )
 
 [node name="Label" type="Label" parent="NPC"]
@@ -125,10 +125,10 @@ script = ExtResource( 4 )
 [node name="Limits" type="Node" parent="Camera2D"]
 
 [node name="TopLeft" type="Position2D" parent="Camera2D/Limits"]
-position = Vector2( 6.67433, -8.67638 )
+position = Vector2( -46.3257, -163.676 )
 
 [node name="BottomRight" type="Position2D" parent="Camera2D/Limits"]
-position = Vector2( 1119.26, 190.882 )
+position = Vector2( 434.26, 264.882 )
 
 [node name="catPhoto" type="Sprite" parent="."]
 position = Vector2( -226.371, 111.642 )
@@ -168,7 +168,7 @@ position = Vector2( 1065.29, 150.973 )
 script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndLevel"]
-position = Vector2( 37.0811, 1.05945 )
+position = Vector2( -477.295, 48.1381 )
 shape = SubResource( 8 )
 
 [connection signal="body_entered" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_entered"]
