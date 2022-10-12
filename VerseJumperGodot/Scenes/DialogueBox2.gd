@@ -1,14 +1,13 @@
 extends Control
 
-var dialogue = [" Hello, wanna see something scary?",
-" You should start running as soon as you can.",
-" Make sure to take a good look at the monster."]
+var dialogue = [" You wanna go somewhere fun?",
+" Oh, you dont?",
+" That's toooooo bad then idiot."]
 
 onready var dialogue_display
-onready var playerNode = get_node("/root/BaseScene/Player")
-onready var catPhoto = get_node("/root/BaseScene/catPhoto")
+onready var playerNode = get_node("/root/BaseSceneCopy/Player")
 
-signal activate_monster
+signal transition_scene
 
 var dialogue_index = 0
 var finished = false
@@ -27,8 +26,9 @@ func load_dialogue():
 	
 	if dialogue_index < dialogue.size():
 		$RichTextLabel.bbcode_text = dialogue[dialogue_index]
+		print(dialogue[dialogue_index])
 	else:
 		playerNode.can_move = true 
-		emit_signal("activate_monster")
+		emit_signal("transition_scene")
 		queue_free()
 	dialogue_index += 1

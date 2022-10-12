@@ -28,7 +28,7 @@ func _physics_process(delta):
 		var inputVector = Vector2.ZERO
 		inputVector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 		inputVector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-		print(inputVector)
+		
 		
 		if inputVector.x == -1 and !Input.is_action_pressed("strafe"):
 			sprite.set_flip_h(true)

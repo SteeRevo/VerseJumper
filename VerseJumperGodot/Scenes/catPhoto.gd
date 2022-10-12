@@ -22,7 +22,7 @@ func monster_time():
 func _process(_delta):
 	var player_sight = get_parent().get_node("Player/Sprite").flip_h
 	if !hitPlayer and player_sight == false:
-		global_position.x += 2
+		global_position.x += 2.5
 
 
 func _on_Area2D_body_entered(body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://dentention_placeholder.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player2.gd" type="Script" id=2]
@@ -7,8 +7,6 @@
 [ext_resource path="res://temp_npc_asset.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/NPC.gd" type="Script" id=7]
 [ext_resource path="res://novem___.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://beast.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/catPhoto.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/EndLevel.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -25,19 +23,16 @@ extents = Vector2( 44.2432, 287.445 )
 extents = Vector2( 63.3546, 145.094 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 47.7232, 117.739 )
+extents = Vector2( 85.5447, 153.47 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 32
 font_data = ExtResource( 8 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 357.798, 293.88 )
-
-[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 27.2922, 36.0576 )
 
-[node name="BaseScene" type="Node2D"]
+[node name="BaseSceneCopy" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 198.748, 57.3981 )
@@ -70,25 +65,22 @@ position = Vector2( 214.045, 297.944 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 479.123, 110.918 )
+position = Vector2( 471.106, 111.34 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( -81.7194, 109.126 )
+position = Vector2( -70.327, 110.392 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 213.202, -194.837 )
+position = Vector2( 211.42, -183.255 )
 rotation = -1.5708
 shape = SubResource( 3 )
 
 [node name="NPC" type="StaticBody2D" parent="."]
-position = Vector2( 356.167, 163.843 )
+position = Vector2( 357.802, 163.1 )
 scale = Vector2( 0.215179, 0.215179 )
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="temp_npc_asset" type="Sprite" parent="NPC"]
 position = Vector2( -43.4753, 98.3797 )
@@ -102,15 +94,15 @@ shape = SubResource( 4 )
 [node name="Area2D" type="Area2D" parent="NPC"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Area2D"]
-position = Vector2( -51.7799, 91.8355 )
+position = Vector2( -43.49, 89.763 )
 shape = SubResource( 5 )
 
 [node name="Label" type="Label" parent="NPC"]
 visible = false
-margin_left = -79.0854
-margin_top = -314.402
-margin_right = 221.915
-margin_bottom = -259.402
+margin_left = -110.878
+margin_top = -101.936
+margin_right = 190.123
+margin_bottom = -46.9357
 custom_fonts/font = SubResource( 6 )
 text = "Press Enter"
 __meta__ = {
@@ -125,22 +117,10 @@ script = ExtResource( 4 )
 [node name="Limits" type="Node" parent="Camera2D"]
 
 [node name="TopLeft" type="Position2D" parent="Camera2D/Limits"]
-position = Vector2( -46.3257, -163.676 )
+position = Vector2( -33.5978, -145.291 )
 
 [node name="BottomRight" type="Position2D" parent="Camera2D/Limits"]
-position = Vector2( 434.26, 264.882 )
-
-[node name="catPhoto" type="Sprite" parent="."]
-position = Vector2( -226.371, 111.642 )
-scale = Vector2( 0.201619, 0.201619 )
-texture = ExtResource( 9 )
-script = ExtResource( 10 )
-
-[node name="Area2D" type="Area2D" parent="catPhoto"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="catPhoto/Area2D"]
-rotation = 1.5708
-shape = SubResource( 7 )
+position = Vector2( 426.314, 257.995 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -169,9 +149,8 @@ script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndLevel"]
 position = Vector2( -477.295, 48.1381 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [connection signal="body_entered" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="catPhoto/Area2D" to="catPhoto" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="EndLevel" to="EndLevel" method="_on_EndLevel_body_entered"]
