@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://dialogue_box.png" type="Texture" id=1]
+[ext_resource path="res://dialogue_box2.png" type="Texture" id=1]
 [ext_resource path="res://novem___.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/DialogueBox2.gd" type="Script" id=3]
 
@@ -35,10 +35,10 @@ expand = true
 stretch_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DialogueBox2"]
-margin_left = 6.0
-margin_top = 135.5
-margin_right = 312.0
-margin_bottom = 183.5
+margin_left = 8.37842
+margin_top = 139.365
+margin_right = 314.378
+margin_bottom = 187.365
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Hello"
