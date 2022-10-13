@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Check 1.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 22.1793 )
+
+[node name="Check" type="Area2D"]
+position = Vector2( 471.967, 169.309 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 14.592, 4.77046 )
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -3.70807
+margin_top = -43.9677
+margin_right = 36.2919
+margin_bottom = -29.9677
+text = "Examine"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="." to="." method="_on_Check_1_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Check_1_body_exited"]
