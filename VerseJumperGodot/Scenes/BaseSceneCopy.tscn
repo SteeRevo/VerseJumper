@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://dentention_placeholder.png" type="Texture" id=1]
+[ext_resource path="res://maincharacter_2.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player2.gd" type="Script" id=2]
 [ext_resource path="res://highschool.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=4]
@@ -14,32 +14,112 @@
 radius = 8.97989
 height = 20.052
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idleLeft"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idleRight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walkLeft"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 6 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walkRight"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 311.028, 34.5302 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 44.2432, 287.445 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 63.3546, 145.094 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 85.5447, 153.47 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=11]
 size = 32
 font_data = ExtResource( 8 )
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=12]
 radius = 15.5
-height = 43.5
+height = 36.0
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=13]
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 8 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 27.2922, 36.0576 )
 
 [node name="BaseSceneCopy" type="Node2D"]
@@ -57,9 +137,13 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 1.70226, -10.1741 )
-scale = Vector2( 0.234872, 0.234872 )
+position = Vector2( 0.514762, -7.56472 )
+scale = Vector2( 0.825497, 0.825497 )
 texture = ExtResource( 1 )
+offset = Vector2( 1, 0 )
+hframes = 4
+vframes = 3
+frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 1.60013, -6.82988 )
@@ -68,24 +152,31 @@ shape = SubResource( 1 )
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+anims/idle = SubResource( 2 )
+anims/idleLeft = SubResource( 3 )
+anims/idleRight = SubResource( 4 )
+anims/walkLeft = SubResource( 5 )
+anims/walkRight = SubResource( 6 )
+
 [node name="Bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( 214.045, 297.944 )
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( 471.106, 111.34 )
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( -70.327, 110.392 )
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( 211.42, -183.255 )
 rotation = -1.5708
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="NPC" type="StaticBody2D" parent="."]
 position = Vector2( 357.802, 163.1 )
@@ -99,13 +190,13 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
 position = Vector2( -41.0329, 94.7664 )
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="NPC"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Area2D"]
 position = Vector2( -43.49, 89.763 )
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 
 [node name="Label" type="Label" parent="NPC"]
 visible = false
@@ -113,7 +204,7 @@ margin_left = -110.878
 margin_top = -101.936
 margin_right = 190.123
 margin_bottom = -46.9357
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 11 )
 text = "Press Enter"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,15 +215,15 @@ position = Vector2( 52.5, 162.25 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial"]
-position = Vector2( -27, -1.25 )
-shape = SubResource( 7 )
+position = Vector2( -23.25, -1.5 )
+shape = SubResource( 12 )
 
 [node name="Label" type="Label" parent="Tutorial"]
 margin_left = -42.5
 margin_top = -70.5
 margin_right = 53.5
 margin_bottom = -39.5
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 13 )
 text = "WASD to move
 SHIFT to strafe"
 __meta__ = {
@@ -179,7 +270,7 @@ script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndLevel"]
 position = Vector2( -477.295, 48.1381 )
-shape = SubResource( 9 )
+shape = SubResource( 14 )
 
 [connection signal="body_entered" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_exited"]
