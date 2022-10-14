@@ -133,6 +133,21 @@ position = Vector2( 279.097, 108.971 )
 scale = Vector2( 0.856688, 0.856688 )
 texture = ExtResource( 9 )
 
+[node name="cat_1" type="Sprite" parent="."]
+position = Vector2( 390.969, 209.996 )
+scale = Vector2( 0.14926, 0.14926 )
+texture = ExtResource( 10 )
+
+[node name="pxArt_1-1png" type="Sprite" parent="cat_1"]
+position = Vector2( -2316.6, -900.11 )
+scale = Vector2( 0.518855, 0.518855 )
+texture = ExtResource( 11 )
+
+[node name="pxArt_1-1png" type="Sprite" parent="cat_1/pxArt_1-1png"]
+position = Vector2( 3506.13, 200.87 )
+scale = Vector2( 1.14266, 1.14266 )
+texture = ExtResource( 11 )
+
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 25.1259, 241.106 )
 script = ExtResource( 2 )
@@ -262,21 +277,6 @@ text = "Game Over"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="cat_1" type="Sprite" parent="."]
-position = Vector2( 390.969, 209.996 )
-scale = Vector2( 0.14926, 0.14926 )
-texture = ExtResource( 10 )
-
-[node name="pxArt_1-1png" type="Sprite" parent="cat_1"]
-position = Vector2( -2316.6, -900.11 )
-scale = Vector2( 0.518855, 0.518855 )
-texture = ExtResource( 11 )
-
-[node name="pxArt_1-1png" type="Sprite" parent="cat_1/pxArt_1-1png"]
-position = Vector2( 3506.13, 200.87 )
-scale = Vector2( 1.14266, 1.14266 )
-texture = ExtResource( 11 )
 
 [connection signal="body_entered" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="NPC/Area2D" to="NPC" method="_on_Area2D_body_exited"]
