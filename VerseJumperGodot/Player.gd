@@ -6,12 +6,13 @@ extends KinematicBody2D
 # var b = "text"
 
 const ACCELERATION = 400
-const MAX_SPEED = 300
+const MAX_SPEED = 100
 const FRICTION = 400
 
 var motion = Vector2.ZERO
 
 onready var sprite = $Sprite
+onready var anim = $AnimationPlayer
 
 var can_move = true
 
@@ -31,6 +32,7 @@ func _physics_process(delta):
 		if inputVector.x == -1 and !Input.is_action_pressed("strafe"):
 			sprite.set_flip_h(false)
 			
+			
 		elif inputVector.x == 1 and !Input.is_action_pressed("strafe"):
 			sprite.set_flip_h(true)
 		
@@ -39,10 +41,12 @@ func _physics_process(delta):
 		
 		#moves at rate of acceleration times delta and maxes out at max speed
 		if inputVector != Vector2.ZERO:
+			anim.play("walk")
 			motion += inputVector * ACCELERATION * delta
 			motion = motion.clamped(MAX_SPEED)
 		else:
 			motion = motion.move_toward(Vector2.ZERO, FRICTION * delta)
+			anim.play("idle")
 		
 		
 		#performs movement of player

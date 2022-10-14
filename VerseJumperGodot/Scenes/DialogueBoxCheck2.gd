@@ -4,7 +4,7 @@ var dialogue = [" My ID. Better not forget it."]
 
 onready var dialogue_display
 onready var playerNode = get_node("/root/BaseScene/Player")
-onready var catPhoto = get_node("/root/BaseScene/catPhoto")
+
 
 signal examined
 

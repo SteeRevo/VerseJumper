@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Check 1.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.7857, 22.1793 )
+extents = Vector2( 9.04205, 14.8071 )
 
 [node name="Check" type="Area2D"]
 position = Vector2( 471.967, 169.309 )

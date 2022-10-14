@@ -1,20 +1,16 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Background/bg4.png" type="Texture" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://PlayerAssets/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Background/bg2.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=4]
 [ext_resource path="res://Prefabs/Check.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Choice 1.gd" type="Script" id=6]
 [ext_resource path="res://Background/bg1.png" type="Texture" id=7]
 [ext_resource path="res://PlayerAssets/hand.png" type="Texture" id=8]
-[ext_resource path="res://PlayerAssets/main character.png" type="Texture" id=9]
 [ext_resource path="res://Background/bg3.png" type="Texture" id=10]
 [ext_resource path="res://CreeperPixelRegular-DMYx.ttf" type="DynamicFontData" id=11]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 12.2626
-height = 46.1122
+[ext_resource path="res://Scenes/Choice 2.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 668.63, 47.0815 )
@@ -44,7 +40,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -158.449, 99.638 ), Vector2( -98.8793, 82.1766 ), Vector2( -39.1222, 89.4836 ), Vector2( 6.10997, 103.443 ), Vector2( 66.8612, 99.8017 ) ]
+"values": [ Vector2( 56.503, 119.281 ), Vector2( 96.9903, 107.432 ), Vector2( 155.064, 115.3 ), Vector2( 181.128, 118.877 ), Vector2( 225.128, 116.639 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -57,10 +53,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 35.1132, 105.358 ), Vector2( -34.0687, 101.994 ), Vector2( -110.155, 95.6199 ), Vector2( -226.812, 85.6798 ) ]
+"values": [ Vector2( 198.993, 116.582 ), Vector2( -20.2789, 101.955 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -97,30 +93,16 @@ scale = Vector2( 0.736893, 0.668195 )
 texture = ExtResource( 3 )
 
 [node name="Background1" type="Sprite" parent="."]
-position = Vector2( 312.255, 92.883 )
-scale = Vector2( 0.736893, 0.668195 )
+position = Vector2( 299.565, 94.1389 )
+scale = Vector2( 0.587242, 0.585212 )
 texture = ExtResource( 7 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 396.026, 177.304 )
-script = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 2.73584, -22.6779 )
-scale = Vector2( 0.0569571, 0.0569571 )
-texture = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 4.40946, -16.5689 )
-shape = SubResource( 1 )
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../Camera2D")
+[node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 328.403, 236.973 )
+position = Vector2( 329.347, 237.445 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
@@ -128,7 +110,7 @@ position = Vector2( 609.335, 126.489 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( -49.1005, 109.745 )
+position = Vector2( -13.6178, 124.943 )
 shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -139,10 +121,10 @@ script = ExtResource( 4 )
 [node name="Limits" type="Node" parent="Camera2D"]
 
 [node name="TopLeft" type="Position2D" parent="Camera2D/Limits"]
-position = Vector2( 6.67433, -8.67638 )
+position = Vector2( 36.4196, -6.99268 )
 
 [node name="BottomRight" type="Position2D" parent="Camera2D/Limits"]
-position = Vector2( 555.755, 194.253 )
+position = Vector2( 551.265, 189.763 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -169,20 +151,27 @@ __meta__ = {
 [node name="Check 1" parent="." instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" parent="Check 1" index="0"]
-position = Vector2( -40.8445, -1.52916 )
+position = Vector2( 60.1501, 0.358596 )
 
 [node name="Label" parent="Check 1" index="1"]
-margin_left = -93.6774
-margin_top = -68.4359
-margin_right = 1.32257
-margin_bottom = -54.4359
+margin_left = 12.9565
+margin_top = -42.6193
+margin_right = 107.956
+margin_bottom = -28.6193
 custom_fonts/font = SubResource( 9 )
 text = "Examine folder"
 
 [node name="Check 2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 47.1223, 158.185 )
 
+[node name="CollisionShape2D" parent="Check 2" index="0"]
+position = Vector2( 98.2197, 12.6467 )
+
 [node name="Label" parent="Check 2" index="1"]
+margin_left = 77.6704
+margin_top = -39.4779
+margin_right = 121.67
+margin_bottom = -25.4779
 custom_fonts/font = SubResource( 10 )
 text = "Examine ID"
 
@@ -190,8 +179,8 @@ text = "Examine ID"
 script = ExtResource( 6 )
 
 [node name="SB_Patchy_Hand" type="Sprite" parent="Choice 1"]
-position = Vector2( -226.812, 85.6798 )
-scale = Vector2( 0.26688, 0.26688 )
+position = Vector2( -117.572, 90.2027 )
+scale = Vector2( 0.365703, 0.365703 )
 texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Choice 1/SB_Patchy_Hand"]
@@ -199,14 +188,14 @@ anims/Slide = SubResource( 4 )
 anims/SlideBack = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice 1"]
-position = Vector2( 188.988, 186.468 )
+position = Vector2( 296.972, 177.699 )
 shape = SubResource( 6 )
 
 [node name="Label" type="Label" parent="Choice 1"]
-margin_left = 173.489
-margin_top = 180.3
-margin_right = 238.489
-margin_bottom = 202.3
+margin_left = 283.51
+margin_top = 170.929
+margin_right = 346.51
+margin_bottom = 192.929
 custom_fonts/font = SubResource( 11 )
 text = "I & I"
 __meta__ = {
@@ -215,16 +204,17 @@ __meta__ = {
 
 [node name="Choice 2" type="Area2D" parent="."]
 position = Vector2( 0, 1.25992 )
+script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice 2"]
-position = Vector2( 307.421, 187.098 )
+position = Vector2( 402.752, 178.603 )
 shape = SubResource( 7 )
 
 [node name="Label" type="Label" parent="Choice 2"]
-margin_left = 286.632
-margin_top = 178.909
-margin_right = 326.632
-margin_bottom = 192.909
+margin_left = 387.863
+margin_top = 169.706
+margin_right = 427.863
+margin_bottom = 183.706
 custom_fonts/font = SubResource( 12 )
 text = "You & I"
 __meta__ = {
@@ -234,6 +224,8 @@ __meta__ = {
 [connection signal="body_entered" from="Choice 1" to="Choice 1" method="_on_Choice_1_body_entered"]
 [connection signal="body_exited" from="Choice 1" to="Choice 1" method="_on_Choice_1_body_exited"]
 [connection signal="animation_finished" from="Choice 1/SB_Patchy_Hand/AnimationPlayer" to="Choice 1" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="Choice 2" to="Choice 2" method="_on_Choice_2_body_entered"]
+[connection signal="body_exited" from="Choice 2" to="Choice 2" method="_on_Choice_2_body_exited"]
 
 [editable path="Check 1"]
 [editable path="Check 2"]

@@ -28,7 +28,6 @@ func _physics_process(delta):
 		#moves player based on input strength
 		var inputVector = Vector2.ZERO
 		inputVector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-		inputVector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 		
 		
 		if inputVector.x == -1:
@@ -39,17 +38,17 @@ func _physics_process(delta):
 			anim.play("walkRight")
 			last_input = -1
 		
-		if inputVector.y == 1 and last_input == 1:
-			anim.play("walkLeft")
+	#if inputVector.y == 1 and last_input == 1:
+		#	anim.play("walkLeft")
 		
-		elif inputVector.y == 1 and last_input == -1:
-			anim.play("walkRight")
+	#	elif inputVector.y == 1 and last_input == -1:
+	#		anim.play("walkRight")
 			
-		if inputVector.y == -1 and last_input == 1:
-			anim.play("walkLeft")
+	#	if inputVector.y == -1 and last_input == 1:
+	#		anim.play("walkLeft")
 		
-		elif inputVector.y == -1 and last_input == -1:
-			anim.play("walkRight")
+	#	elif inputVector.y == -1 and last_input == -1:
+	#		anim.play("walkRight")
 		
 		
 		

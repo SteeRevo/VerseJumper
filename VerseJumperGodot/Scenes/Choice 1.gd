@@ -19,7 +19,8 @@ func _process(delta):
 		can_trigger = false
 		var dialogue = DIALOGUE.instance()
 		get_parent().get_node("CanvasLayer").add_child(dialogue)
-		var dialogue_path = get_node("/root/BaseScene/CanvasLayer/Control/DialogueBox")
+		var dialogue_path = get_node("/root/BaseScene/CanvasLayer/ControlNode/DialogueBox")
+		print(dialogue_path)
 		dialogue_path.connect("hand_back", self, "on_dialogue_done")
 
 

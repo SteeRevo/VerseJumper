@@ -27,18 +27,19 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="DialogueBox2"]
-margin_top = 134.0
-margin_right = 323.0
-margin_bottom = 173.0
+margin_left = 0.297302
+margin_top = 26.0796
+margin_right = 323.297
+margin_bottom = 65.0796
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DialogueBox2"]
-margin_left = 8.37842
-margin_top = 139.365
-margin_right = 314.378
-margin_bottom = 187.365
+margin_left = 8.67572
+margin_top = 34.4176
+margin_right = 314.675
+margin_bottom = 82.4176
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Hello"

@@ -1,14 +1,13 @@
 extends Control
 
-var dialogue = [" You don't know?",
-" ...They didn't tell you.",
-" I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T I CAN'T"]
+
+var dialogue = [" Huh. I think I'm late for school"]
 
 onready var dialogue_display
-onready var playerNode = get_node("/root/BaseScene/Player")
+onready var playerNode = get_node("/root/BaseScene2Control/Player")
 
 
-signal hand_back
+signal go_to_end
 
 var dialogue_index = 0
 var finished = false
@@ -29,6 +28,6 @@ func load_dialogue():
 		$RichTextLabel.bbcode_text = dialogue[dialogue_index]
 	else:
 		playerNode.can_move = true 
-		emit_signal("hand_back")
+		emit_signal("go_to_end")
 		queue_free()
 	dialogue_index += 1

@@ -4,7 +4,7 @@ var dialogue = ["Mom and Dad forgot to put their folder away."]
 
 onready var dialogue_display
 onready var playerNode = get_node("/root/BaseScene/Player")
-onready var catPhoto = get_node("/root/BaseScene/catPhoto")
+
 
 signal examined
 
