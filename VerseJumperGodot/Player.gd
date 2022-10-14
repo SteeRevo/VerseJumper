@@ -29,10 +29,10 @@ func _physics_process(delta):
 		
 		
 		if inputVector.x == -1 and !Input.is_action_pressed("strafe"):
-			sprite.set_flip_h(true)
+			sprite.set_flip_h(false)
 			
 		elif inputVector.x == 1 and !Input.is_action_pressed("strafe"):
-			sprite.set_flip_h(false)
+			sprite.set_flip_h(true)
 		
 		
 		

@@ -1,13 +1,11 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Background/bg4.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Background/bg2.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=4]
-[ext_resource path="res://Prefabs/Check.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Choice 1.gd" type="Script" id=6]
 [ext_resource path="res://Background/bg1.png" type="Texture" id=7]
-[ext_resource path="res://PlayerAssets/hand.png" type="Texture" id=8]
 [ext_resource path="res://PlayerAssets/main character.png" type="Texture" id=9]
 [ext_resource path="res://Background/bg3.png" type="Texture" id=10]
 [ext_resource path="res://CreeperPixelRegular-DMYx.ttf" type="DynamicFontData" id=11]
@@ -22,57 +20,19 @@ extents = Vector2( 668.63, 47.0815 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 50.3519, 294.946 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=9]
-font_data = ExtResource( 11 )
-
-[sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 11 )
-
-[sub_resource type="Animation" id=4]
-resource_name = "Slide"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -158.449, 99.638 ), Vector2( -98.8793, 82.1766 ), Vector2( -39.1222, 89.4836 ), Vector2( 6.10997, 103.443 ), Vector2( 66.8612, 99.8017 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "SlideBack"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 35.1132, 105.358 ), Vector2( -34.0687, 101.994 ), Vector2( -110.155, 95.6199 ), Vector2( -226.812, 85.6798 ) ]
-}
-
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 24.8409, 10 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 11 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 29.2506, 10.5447 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=8]
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 11 )
 
@@ -91,12 +51,12 @@ scale = Vector2( 0.693232, 0.693232 )
 texture = ExtResource( 10 )
 
 [node name="Background2" type="Sprite" parent="."]
-visible = false
 position = Vector2( 281.301, 84.946 )
 scale = Vector2( 0.736893, 0.668195 )
 texture = ExtResource( 3 )
 
 [node name="Background1" type="Sprite" parent="."]
+visible = false
 position = Vector2( 312.255, 92.883 )
 scale = Vector2( 0.736893, 0.668195 )
 texture = ExtResource( 7 )
@@ -160,55 +120,26 @@ margin_left = 121.838
 margin_top = 83.6975
 margin_right = 194.838
 margin_bottom = 111.697
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 text = "Game Over"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Check 1" parent="." instance=ExtResource( 5 )]
-
-[node name="CollisionShape2D" parent="Check 1" index="0"]
-position = Vector2( -40.8445, -1.52916 )
-
-[node name="Label" parent="Check 1" index="1"]
-margin_left = -93.6774
-margin_top = -68.4359
-margin_right = 1.32257
-margin_bottom = -54.4359
-custom_fonts/font = SubResource( 9 )
-text = "Examine folder"
-
-[node name="Check 2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 47.1223, 158.185 )
-
-[node name="Label" parent="Check 2" index="1"]
-custom_fonts/font = SubResource( 10 )
-text = "Examine ID"
-
 [node name="Choice 1" type="Area2D" parent="."]
 script = ExtResource( 6 )
 
-[node name="SB_Patchy_Hand" type="Sprite" parent="Choice 1"]
-position = Vector2( -226.812, 85.6798 )
-scale = Vector2( 0.26688, 0.26688 )
-texture = ExtResource( 8 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Choice 1/SB_Patchy_Hand"]
-anims/Slide = SubResource( 4 )
-anims/SlideBack = SubResource( 5 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice 1"]
 position = Vector2( 188.988, 186.468 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Label" type="Label" parent="Choice 1"]
 margin_left = 173.489
 margin_top = 180.3
 margin_right = 238.489
 margin_bottom = 202.3
-custom_fonts/font = SubResource( 11 )
-text = "I & I"
+custom_fonts/font = SubResource( 6 )
+text = "YOUR NAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -225,15 +156,11 @@ margin_left = 286.632
 margin_top = 178.909
 margin_right = 326.632
 margin_bottom = 192.909
-custom_fonts/font = SubResource( 12 )
-text = "You & I"
+custom_fonts/font = SubResource( 8 )
+text = "MY NAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [connection signal="body_entered" from="Choice 1" to="Choice 1" method="_on_Choice_1_body_entered"]
 [connection signal="body_exited" from="Choice 1" to="Choice 1" method="_on_Choice_1_body_exited"]
-[connection signal="animation_finished" from="Choice 1/SB_Patchy_Hand/AnimationPlayer" to="Choice 1" method="_on_AnimationPlayer_animation_finished"]
-
-[editable path="Check 1"]
-[editable path="Check 2"]
